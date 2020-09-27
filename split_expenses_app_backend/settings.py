@@ -25,7 +25,7 @@ SECRET_KEY = '#e*@p-%4a7tg)9i_#cn!bsyn(fw99cd5$#tupyri0y*7qml^ih'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -73,16 +73,8 @@ WSGI_APPLICATION = 'split_expenses_app_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dev',
-        'USER': 'dev',
-        'PASSWORD': 'dev',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default="postgres://dev:dev@localhost:5432/dev")}
 
 
 # Password validation
