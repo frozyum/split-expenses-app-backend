@@ -25,7 +25,7 @@ SECRET_KEY = '#e*@p-%4a7tg)9i_#cn!bsyn(fw99cd5$#tupyri0y*7qml^ih'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'splitexpenses-backend.herokuapp.com']
 
 
 # Application definition
