@@ -6,7 +6,6 @@ node_js:
 #    - master
 before_script:
   - gem install dpl
-  - npm install
-  - npm run build
+
 script:
   - dpl --skip-cleanup --provider=heroku --app=splitexpenses-backend --api-key=$HEROKU_API_KEY
