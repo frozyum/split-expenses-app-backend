@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "8.10.0"
+
+services:
+  - docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.16.1
+
+after_success:
+  - sudo docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+  - sudo docker build -t splitexpenses/backend:latest .
+  - sudo docker tag splitexpenses/backend:latest registry.heroku.com/splitexpenses-backend/web
+  - sudo docker push registry.heroku.com/splitexpenses-backend/web
+  - docker run --rm -e HEROKU_API_KEY=$HEROKU_API_KEY  wingrunr21/alpine-heroku-cli container:release web --app splitexpenses-backend
