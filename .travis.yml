@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 10
+#branches:
+#  only:
+#    - master
+before_script:
+  - gem install dpl
+
+script:
+  - dpl --skip-cleanup --provider=heroku --app=splitexpenses-backend --api-key=$HEROKU_API_KEY

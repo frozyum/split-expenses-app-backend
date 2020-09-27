@@ -11,6 +11,7 @@ App for splitting expenses
 * Python 3
 * Django
 * Docker/Docker-Compose
+* Travis CI/CD
 
 ### Authors:
 * Sandro Mamukelashvili smamu13@freeuni.edu.ge
