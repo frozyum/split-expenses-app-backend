@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'splitexpenses-backend.her
 # Application definition
 
 INSTALLED_APPS = [
+    'authentication',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +50,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'authentication.authenticationfilters.JWTAuthentication',
+    )
+}
 
 ROOT_URLCONF = 'split_expenses_app_backend.urls'
 
@@ -115,3 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'authentication.User'
+
+JWT_SECRET_KEY = str(os.environ.get('JWT_SECRET_KEY'))
+
+ACCESS_TOKEN_EXPIRATION_TIME = 60 * 60 * 10000
