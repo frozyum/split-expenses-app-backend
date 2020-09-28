@@ -125,6 +125,6 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'authentication.User'
 
-JWT_SECRET_KEY = str(os.environ.get('JWT_SECRET_KEY'))
+JWT_SECRET_KEY = 'JWT_SECRET_KEY'
 
 ACCESS_TOKEN_EXPIRATION_TIME = 60 * 60 * 10000

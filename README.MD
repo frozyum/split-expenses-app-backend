@@ -7,6 +7,12 @@ App for splitting expenses
 3. Install dependencies: `pip install -r requirements.txt`
 4. Start server: `python manage.py runserver`
 
+### How to run the project for development in Docker:
+1. Install Docker
+2. Build image: `docker build -t splitexpenses .`
+3. Start database and server: `docker-compose up
+4. Start only database: `docker-compose -f docker-compose-database.yml up`
+
 ### Technologies used:
 * Python 3
 * Django
