@@ -118,3 +118,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'authentication.User'
+
+JWT_SECRET_KEY = str(os.environ.get('JWT_SECRET_KEY'))
