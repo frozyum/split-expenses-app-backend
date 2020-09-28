@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import jwt
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -9,6 +11,7 @@ from split_expenses_app_backend import settings
 
 
 # Create your views here.
+from utils.datetransformations import default_date_format
 
 
 class RegisterView(GenericAPIView):
@@ -33,7 +36,12 @@ class LoginView(GenericAPIView):
             password = request.data.get('password', '')
             user = auth.authenticate(username=username, password=password)
             if user:
-                auth_token = jwt.encode({'username': user.username}, settings.JWT_SECRET_KEY)
+                auth_token = jwt.encode(
+                    {
+                        'username': user.username,
+                        'create_date': datetime.now().strftime(default_date_format)
+                    },
+                    settings.JWT_SECRET_KEY)
                 data = {'user': serializer.data, 'token': auth_token}
                 return Response(data, status=status.HTTP_200_OK)
             else:
