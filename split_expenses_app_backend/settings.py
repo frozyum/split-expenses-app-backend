@@ -51,6 +51,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'authentication.authenticationfilters.JWTAuthentication',
+    )
+}
+
 ROOT_URLCONF = 'split_expenses_app_backend.urls'
 
 TEMPLATES = [
