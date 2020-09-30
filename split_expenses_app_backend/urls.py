@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ping/', include('ping.urls')),
     path('auth/', include('authentication.urls')),
+    path('group/', include('group.urls')),
 
 ]

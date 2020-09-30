@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'splitexpenses-backend.her
 # Application definition
 
 INSTALLED_APPS = [
+    'group',
     'authentication',
     'rest_framework',
     'django.contrib.admin',
@@ -54,8 +55,11 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'authentication.authenticationfilters.JWTAuthentication',
-    )
+    ),
 }
+
+
+
 
 ROOT_URLCONF = 'split_expenses_app_backend.urls'
 
