@@ -11,8 +11,3 @@ class Group(models.Model):
 
     def __str__(self):
         return str(self.owner) + 's ' + str(self.name)
-
-
-
-
-

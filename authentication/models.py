@@ -18,7 +18,3 @@ class User(AbstractUser):
         choices=User_Roles,
         default=REGULAR,
     )
-
-
-
-

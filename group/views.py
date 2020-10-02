@@ -12,6 +12,7 @@ class GroupList(ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
+        x = self.request.user
         new_group = serializer.save(owner=self.request.user)
 
     def get_queryset(self):
