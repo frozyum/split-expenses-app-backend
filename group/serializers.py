@@ -4,8 +4,9 @@ from .models import Group
 
 class GroupSerializer(ModelSerializer):
     class Meta:
+        ordering = ['-id']
         model = Group
-        fields = ['name', 'group_photo', 'currency']
+        fields = ['id', 'name', 'group_photo', 'currency']
 
 
 
