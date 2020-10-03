@@ -4,10 +4,10 @@ from .models import Person
 
 
 class PersonSerializer(ModelSerializer):
-    persons = ExpenseSerializer(many=True, read_only=True)
+    expenses = ExpenseSerializer(many=True, read_only=True)
 
     class Meta:
         ordering = ['-id']
         model = Person
-        fields = ['id', 'name', 'persons']
+        fields = ['id', 'name', 'expenses']
         extra_kwargs = {'persons': {'required': False}}
