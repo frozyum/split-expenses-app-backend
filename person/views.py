@@ -14,13 +14,12 @@ class GroupPersonList(ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     lookup_field = "group_id"
 
-    # TODO change pk field
     def perform_create(self, serializer, *args, **kwargs):
         new_person = serializer.save(
-            group=Group.objects.get(pk=self.request.parser_context['kwargs'][self.lookup_field]))
+            group=Group.objects.get(pk=self.kwargs[self.lookup_field]))
 
     def get_queryset(self):
-        return Person.objects.filter(group_id=self.request.parser_context['kwargs'][self.lookup_field]).all()
+        return Person.objects.filter(group_id=self.kwargs[self.lookup_field]).all()
 
 
 class PersonDetailView(RetrieveUpdateDestroyAPIView):
@@ -29,4 +28,4 @@ class PersonDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
     def get_queryset(self):
-        return Person.objects.filter(id=self.request.parser_context['kwargs'][self.lookup_field])
+        return Person.objects.filter(id=self.kwargs[self.lookup_field])
