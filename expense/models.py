@@ -11,7 +11,7 @@ from person.models import Person
 
 class Expense(models.Model):
     group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
-    by = models.ForeignKey(to=Person, related_name='by', on_delete=models.CASCADE)
+    by = models.ForeignKey(to=Person, related_name='persons', on_delete=models.CASCADE)
     too = models.ManyToManyField(to=Person, related_name='to')
     title = models.CharField(max_length=24)
     amount = models.FloatField()
