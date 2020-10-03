@@ -7,4 +7,4 @@ class ExpenseSerializer(ModelSerializer):
         ordering = ['-id']
         model = Expense
         fields = ['id', 'title', 'amount', 'date', 'currency', 'by', 'too']
-        extra_kwargs = {'books': {'required': False}}
+        extra_kwargs = {'too': {'required': False}}
