@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'splitexpenses-backend.her
 # Application definition
 
 INSTALLED_APPS = [
+    'payment',
     'expense',
     'person',
     'group',

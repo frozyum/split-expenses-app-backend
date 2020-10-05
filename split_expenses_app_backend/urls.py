@@ -23,4 +23,6 @@ urlpatterns = [
     path('groups/', include('group.urls')),
     path('', include('person.urls')),
     path('', include('expense.urls')),
+    path('', include('payment.urls')),
+
 ]
