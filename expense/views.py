@@ -51,6 +51,4 @@ def get_report(request, group_id):
         for expense_person in expense_persons:
             if expense_person.name != expense.by.name:
                 persons_report[expense_person.name] -= expense.amount / len(expense_persons)
-    print(json.dumps(persons_report))
-    print(persons_report)
     return HttpResponse(json.dumps(persons_report))
