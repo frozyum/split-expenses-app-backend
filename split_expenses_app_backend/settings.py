@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'split_expenses_app_backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(default="postgres://dispxwhkwbxreq:80bb69f1c866a28d48a6c071da2dc8b29d64feb5fa77169df25e406ee21fd4b0@ec2-54-217-236-206.eu-west-1.compute.amazonaws.com:5432/d5bej1mlqoinr1")}
+DATABASES = {'default': dj_database_url.config(default="postgres://dev:dev@localhost:5432/dev")}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
