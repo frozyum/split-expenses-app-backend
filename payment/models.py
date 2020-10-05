@@ -8,7 +8,7 @@ from person.models import Person
 
 class Payment(models.Model):
     group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
-    froom = models.ForeignKey(to=Person, related_name='from', on_delete=models.CASCADE)
+    froom = models.ForeignKey(to=Person, related_name='from+', on_delete=models.CASCADE)
     too = models.ForeignKey(to=Person, related_name='to', on_delete=models.CASCADE)
     amount = models.FloatField()
     date = models.DateTimeField()
