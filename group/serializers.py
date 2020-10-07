@@ -6,7 +6,4 @@ class GroupSerializer(ModelSerializer):
     class Meta:
         ordering = ['-id']
         model = Group
-        fields = ['id', 'name', 'group_photo', 'currency']
-
-
-
+        fields = ['id', 'name', 'currency']

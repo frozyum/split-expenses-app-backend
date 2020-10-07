@@ -11,7 +11,7 @@ from .serializers import ExpenseSerializer
 from rest_framework import permissions
 from .models import Expense
 from person.models import Person
-
+from payment.models import Payment
 
 # Create your views here.
 
@@ -51,4 +51,10 @@ def get_report(request, group_id):
         for expense_person in expense_persons:
             if expense_person.name != expense.by.name:
                 persons_report[expense_person.name] -= expense.amount / len(expense_persons)
+
+    payments = Payment.objects.filter(group_id=group_id).all()
+    for payment in payments:
+        persons_report[payment.froom.name] += payment.amount
+        persons_report[payment.too.name] -= payment.amount
+
     return HttpResponse(json.dumps(persons_report))
