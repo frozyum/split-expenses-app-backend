@@ -14,6 +14,8 @@ from person.models import Person
 from payment.models import Payment
 
 # Create your views here.
+from .services.reportservice import get_transactions_report
+
 
 class GroupExpenseList(ListCreateAPIView):
     serializer_class = ExpenseSerializer
@@ -62,22 +64,5 @@ def get_report(request, group_id):
 
 @api_view(['GET'])
 def get_transaction_list(request, group_id):
-    persons_report = {}
-    persons = Person.objects.filter(group_id=group_id).all()
-
-    for e in persons:
-        persons_report[e.name] = {}
-        for j in persons:
-            if e.name != j.name:
-                persons_report[e.name][j.name] = 0
-
-    expenses = Expense.objects.filter(group_id=group_id).all()
-
-    for expense in expenses:
-        expense_persons = expense.too.all()
-
-        for expense_person in expense_persons:
-            if expense.by.name != expense_person.name:
-                persons_report[expense.by.name][expense_person.name] += expense.amount / len(expense_persons)
-
-    return HttpResponse(json.dumps(persons_report), content_type='application/json')
+    transactions_report = get_transactions_report(group_id)
+    return HttpResponse(json.dumps(transactions_report), content_type='application/json')
