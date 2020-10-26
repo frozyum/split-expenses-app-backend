@@ -14,7 +14,7 @@ from person.models import Person
 from payment.models import Payment
 
 # Create your views here.
-from .services.reportservice import get_transactions_report
+from .services.reportservice import get_transactions_report, get_persons_report
 
 
 class GroupExpenseList(ListCreateAPIView):
@@ -41,24 +41,7 @@ class ExpenseDetailView(RetrieveUpdateDestroyAPIView):
 
 @api_view(['GET'])
 def get_report(request, group_id):
-    persons_report = {}
-    persons = Person.objects.filter(group_id=group_id).all()
-    for e in persons:
-        persons_report[e.name] = 0
-
-    expenses = Expense.objects.filter(group_id=group_id).all()
-    for expense in expenses:
-        expense_persons = expense.too.all()
-        persons_report[expense.by.name] += expense.amount - (expense.amount / len(expense_persons))
-        for expense_person in expense_persons:
-            if expense_person.name != expense.by.name:
-                persons_report[expense_person.name] -= expense.amount / len(expense_persons)
-
-    payments = Payment.objects.filter(group_id=group_id).all()
-    for payment in payments:
-        persons_report[payment.froom.name] += payment.amount
-        persons_report[payment.too.name] -= payment.amount
-
+    persons_report = get_persons_report(group_id)
     return HttpResponse(json.dumps(persons_report))
 
 
