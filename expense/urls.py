@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import GroupExpenseList, ExpenseDetailView
+from .crud_view import GroupExpenseList, ExpenseDetailView
 from . import views
 
 urlpatterns = [
