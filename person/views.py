@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
 from group.models import Group
 from .serializers import PersonSerializer
 from rest_framework import permissions
