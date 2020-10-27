@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from .models import Payment
 
 
-class ExpenseSerializer(ModelSerializer):
+class PaymentSerializer(ModelSerializer):
     class Meta:
         ordering = ['-id']
         model = Payment

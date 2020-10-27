@@ -1,6 +1,6 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from group.models import Group
-from .serializers import ExpenseSerializer
+from .serializers import PaymentSerializer
 from rest_framework import permissions
 from .models import Payment
 
@@ -8,7 +8,7 @@ from .models import Payment
 # Create your views here.
 
 class GroupPaymentList(ListCreateAPIView):
-    serializer_class = ExpenseSerializer
+    serializer_class = PaymentSerializer
     permission_classes = (permissions.IsAuthenticated,)
     lookup_field = "group_id"
 
@@ -21,7 +21,7 @@ class GroupPaymentList(ListCreateAPIView):
 
 
 class PaymentDetailView(RetrieveUpdateDestroyAPIView):
-    serializer_class = ExpenseSerializer
+    serializer_class = PaymentSerializer
     permission_classes = (permissions.IsAuthenticated,)
     lookup_field = "id"
 
